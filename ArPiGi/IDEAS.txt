@@ -11,9 +11,9 @@ UI:
 	Drag + Drop for inventory
 	Overworld with pictureBoxes (Retro style) (?)
 
-Classes:	//Ich hätte vorgeschlagen jeder macht eine Klasse, anzahl der spezial skills werden vorher festgelegt
+Classes:	//Ich hätte vorgeschlagen jeder macht eine Klasse, anzahl der special skills werden vorher festgelegt
 	3 main classes, each has its own special skills
-	Each class has 2 spezialisations, that unlock at around level 40
-	Depending on chosen spezialisation the character has the ability to learn spezial skills
+	Each class has 2 specialisations, that unlock at around level 40
+	Depending on chosen specialisation the character has the ability to learn special skills
 
 	
