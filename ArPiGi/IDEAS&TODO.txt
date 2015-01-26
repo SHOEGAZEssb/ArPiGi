@@ -1,0 +1,14 @@
+Fighting System:
+	Basic Attack + Skills
+	Skills are dependent on choosen class
+	Fighter with fastest initiative begins (Pokemon style)
+
+Skills:
+	Can be learned trough skill books + learned with skill points (gained by leveling up or completing 	special quests (?)
+
+UI: 
+	Design similar to Thomas RPG (?)
+	Drag + Drop for inventory
+	Overworld with pictureBoxes (Retro style) (?)
+
+	
