@@ -19,9 +19,10 @@ namespace ArPiGi
       private set { _location = value; }
     }
 
-    public Player(int level, int hp, int mp, int strength, int defense, int speed, Skill[] skills, string name, Image[] sprites)
-      : base(level, hp, mp, strength, defense, speed, skills, name, sprites)
+    public Player(int hp, int mp, int strength, int defense, int speed, Skill[] skills, string name, Image[] sprites)
+      : base(1, hp, mp, strength, defense, speed, skills, name, sprites)
     {
+      
       XP = 0;
     }
   }
