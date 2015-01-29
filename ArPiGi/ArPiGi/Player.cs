@@ -21,8 +21,7 @@ namespace ArPiGi
 
     public Player(int hp, int mp, int strength, int defense, int speed, Skill[] skills, string name, Image[] sprites)
       : base(1, hp, mp, strength, defense, speed, skills, name, sprites)
-    {
-      
+    {   
       XP = 0;
     }
   }

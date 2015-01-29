@@ -18,6 +18,8 @@ namespace ArPiGi
     /// </summary>
     Bitmap _finalImage;
 
+    MapTile _mapTile;
+
     /// <summary>
     /// Constructor.
     /// </summary>
@@ -60,10 +62,16 @@ namespace ArPiGi
     {
       using(Graphics g = Graphics.FromImage(_finalImage))
       {
+        if (_mapTile.Layer == Layer.Lower)
+          g.DrawImage(_mapTile.Sprite, new Point(0, 0));
+
         foreach(Image image in _images)
         {
           g.DrawImage(image, new Rectangle(0, 0, image.Width, image.Height));
         }
+
+        if(_mapTile.Layer == Layer.Upper)
+          g.DrawImage(_mapTile.Sprite, new Point(0, 0));
       }
 
       Image = _finalImage;
