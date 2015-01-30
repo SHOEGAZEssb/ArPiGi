@@ -4,6 +4,7 @@
   {
     string _name;
     string _description;
+    int _mpCosts;
 
     public string Name
     {
@@ -15,6 +16,12 @@
     {
       get { return _description; }
       private set { _description = value; }
+    }
+
+    public int MpCosts
+    {
+      get { return _mpCosts; }
+      set { _mpCosts = value; }
     }
   }
 }
