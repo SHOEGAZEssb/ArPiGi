@@ -6,6 +6,7 @@ namespace ArPiGi
   {
     private string _name;
     private Image[] _sprites;
+    private Image _currentSprite;
 
     public string Name
     {
@@ -17,6 +18,12 @@ namespace ArPiGi
     {
       get { return _sprites; }
       private set { _sprites = value; }
+    }
+
+    public Image CurrentSprite
+    {
+      get { return _currentSprite; }
+      private set { _currentSprite = value; }
     }
 
     public EntityBase(string name, Image[] sprites)

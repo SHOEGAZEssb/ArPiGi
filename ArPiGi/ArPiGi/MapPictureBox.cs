@@ -8,16 +8,19 @@ namespace ArPiGi
   class MapPictureBox : PictureBox
   {
     /// <summary>
-    /// List of images to be drawn.
+    /// List of entities to be drawn.
     /// </summary>
-    List<Image> _images;
+    List<EntityBase> _entities;
 
     /// <summary>
-    /// The final image after all images have been drawn
+    /// The final image after all entities have been drawn
     /// on top of eachother.
     /// </summary>
     Bitmap _finalImage;
 
+    /// <summary>
+    /// The MapTile of this pictureBox.
+    /// </summary>
     MapTile _mapTile;
 
     /// <summary>
@@ -25,34 +28,43 @@ namespace ArPiGi
     /// </summary>
     public MapPictureBox()
     {
-      _images = new List<Image>();
+      _entities = new List<EntityBase>();
       _finalImage = new Bitmap(20, 20);
     }
 
     /// <summary>
-    /// Adds an image to be drawn.
+    /// Adds an entity to be drawn.
     /// </summary>
     /// <param name="image">Image to be added.</param>
-    public void AddImage(Image image)
+    public void AddEntity(EntityBase entity)
     {
-      if(image != null)
+      if(entity != null)
       {
-        _images.Add(image);
+        _entities.Add(entity);
         ReDraw();
       }
       else
-        throw new Exception("Image is null.");
+        throw new Exception("Entity is null.");
     }
 
-    public void RemoveImage(Image image)
+    /// <summary>
+    /// Removes an entity to be drawn.
+    /// </summary>
+    /// <param name="entity">Entity to remove.</param>
+    public void RemoveEntity(EntityBase entity)
     {
-      if (image != null)
+      if (entity != null)
       {
-        _images.Remove(image);
-        ReDraw();
+        if (_entities.Contains(entity))
+        {
+          _entities.Remove(entity);
+          ReDraw();
+        }
+        else
+          throw new Exception("Entity to remove not found.");
       }
       else
-        throw new Exception("Image not found.");
+        throw new Exception("Can't remove nothing.");
     }
     
     /// <summary>
@@ -65,9 +77,10 @@ namespace ArPiGi
         if (_mapTile.Layer == Layer.Lower)
           g.DrawImage(_mapTile.Sprite, new Point(0, 0));
 
-        foreach(Image image in _images)
+        foreach(EntityBase entity in _entities)
         {
-          g.DrawImage(image, new Rectangle(0, 0, image.Width, image.Height));
+          Image sprite = entity.CurrentSprite;
+          g.DrawImage(sprite, new Rectangle(0, 0, sprite.Width, sprite.Height));
         }
 
         if(_mapTile.Layer == Layer.Upper)
