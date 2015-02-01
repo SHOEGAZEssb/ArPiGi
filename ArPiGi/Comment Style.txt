@@ -1,0 +1,45 @@
+Properties:
+
+Example: Skill Name:
+/// <summary>
+/// Gets/sets the name of this skill.
+/// </summary>
+public string Name
+{
+   get { return _name; }
+   private set { _name = value; }
+}
+
+1. Gets/sets
+2. Gets/sets the {PROPERTYNAME} of this {CLASSNAME}.
+
+
+Constructors:
+
+Example: MapTile Constructor:
+/// <summary>
+/// Constructor.
+/// </summary>
+public MapTile(Layer layer, Image image)
+{
+   Layer = layer;
+   Sprite = image;
+}
+
+1. If the constructor just sets properties it gets from parameters, just write "Constructor."
+2. If it does anything else, comment it.
+3. Dont comment the parameters.
+
+
+Methods:
+
+Example: Tile GetMapTile:
+/// <summary>
+/// Gets the MapTile with the given id.
+/// </summary>
+/// <param name="id">ID of the MapTile to get.</param>
+/// <returns>MapTile with the given id.</returns>
+public static MapTile GetMapTile(int id)
+{
+   return _mapTiles.Where<MapTile>(tile => tile.ID == id).FirstOrDefault();
+}
