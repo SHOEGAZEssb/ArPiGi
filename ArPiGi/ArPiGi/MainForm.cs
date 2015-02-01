@@ -8,6 +8,8 @@ namespace ArPiGi
     public MainForm()
     {
       InitializeComponent();
+      MapEditor editor = new MapEditor();
+      editor.ShowDialog();
     }
   }
 }

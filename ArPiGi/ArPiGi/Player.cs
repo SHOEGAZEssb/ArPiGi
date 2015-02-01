@@ -2,14 +2,16 @@
 
 namespace ArPiGi
 {
-  //Represents the players character
+  /// <summary>
+  /// Represents the player.
+  /// </summary>
   class Player : FightableEntity
   {
     private int _xp;
     private Point _location;
 
     /// <summary>
-    /// Gets/Sets a players experience-points
+    /// Gets/sets a the experience points of this player.
     /// </summary>
     public int XP
     {
@@ -18,7 +20,7 @@ namespace ArPiGi
     }
 
     /// <summary>
-    /// Gets/Sets the players location on the map
+    /// Gets/sets the location of this player.
     /// </summary>
     public Point Location
     {
@@ -27,16 +29,8 @@ namespace ArPiGi
     }
 
     /// <summary>
-    /// Creates a new player
+    /// Constructor.
     /// </summary>
-    /// <param name="hp">Healthpower</param>
-    /// <param name="mp">Manapower</param>
-    /// <param name="strength">Strentgh</param>
-    /// <param name="defense">Defensepower</param>
-    /// <param name="speed">Speed</param>
-    /// <param name="skills">Name of players skills-array</param>
-    /// <param name="name">The players name</param>
-    /// <param name="sprites">An array with the players sprites</param>
     public Player(int hp, int mp, int strength, int defense, int speed, Skill[] skills, string name, Image[] sprites)
       : base(1, hp, mp, strength, defense, speed, skills, name, sprites)
     {   

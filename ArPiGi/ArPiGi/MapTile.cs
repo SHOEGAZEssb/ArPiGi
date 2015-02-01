@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 
 namespace ArPiGi
 {
@@ -65,10 +60,11 @@ namespace ArPiGi
     /// <summary>
     /// Constructor.
     /// </summary>
-    public MapTile(Layer layer, Image image)
+    public MapTile(Layer layer, Image image, int id)
     {
       Layer = layer;
       Sprite = image;
+      ID = id;
     }
   }
 }

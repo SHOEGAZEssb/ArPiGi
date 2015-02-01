@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ArPiGi
 {
@@ -11,10 +10,36 @@ namespace ArPiGi
   /// </summary>
   static class Tiles
   {
+    private static List<MapTile> _mapTiles = new List<MapTile>();
+
     /// <summary>
     /// List which holds all available tiles.
     /// </summary>
-    private static List<MapTile> _mapTiles = new List<MapTile>();
+    public static List<MapTile> MapTiles
+    {
+      get { return _mapTiles; }
+      private set { _mapTiles = value; }
+    }
+
+    /// <summary>
+    /// Constructor.
+    /// Loads all tiles on first instanciation.
+    /// </summary>
+    static Tiles()
+    {
+      LoadTiles();
+    }
+
+    private static void LoadTiles()
+    {
+      string[] tileFiles = Directory.GetFiles(@"..\..\Tiles", "*.txt");
+      foreach(string file in tileFiles)
+      {
+        string[] infos = File.ReadAllText(file).Split(';');
+        MapTile tile = new MapTile((Layer)int.Parse(infos[0]), new Bitmap(@"..\..\Tiles\" + infos[1]), int.Parse(infos[2]));
+        Add(tile);
+      }
+    }
 
     /// <summary>
     /// Gets the MapTile with the given id.
@@ -30,7 +55,7 @@ namespace ArPiGi
     /// Adds a MapTile to the MapTile list.
     /// </summary>
     /// <param name="tile">MapTile to add.</param>
-    public static void Add(MapTile tile)
+    private static void Add(MapTile tile)
     {
       _mapTiles.Add(tile);
     }

@@ -26,6 +26,16 @@ namespace ArPiGi
     /// </summary>
     int _mapTileID;
 
+    public int MapTileID
+    {
+      get { return _mapTileID; }
+      set 
+      { 
+        _mapTileID = value;
+        ReDraw();
+      }
+    }
+
     /// <summary>
     /// Constructor.
     /// </summary>
