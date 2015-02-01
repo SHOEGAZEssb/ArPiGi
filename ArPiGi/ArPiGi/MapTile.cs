@@ -33,9 +33,10 @@ namespace ArPiGi
   {
     private Layer _layer;
     private Image _sprite;
+    private int _id;
 
     /// <summary>
-    /// The layer of this tile
+    /// Gets/sets the layer of this tile.
     /// </summary>
     public Layer Layer
     {
@@ -44,12 +45,21 @@ namespace ArPiGi
     }
 
     /// <summary>
-    /// The sprite of this tile.
+    /// Gets/sets the sprite of this tile.
     /// </summary>
     public Image Sprite
     {
       get { return _sprite; }
       private set { _sprite = value; }
+    }
+
+    /// <summary>
+    /// Gets/sets the ID of this tile.
+    /// </summary>
+    public int ID
+    {
+      get { return _id; }
+      private set { _id = value; }
     }
 
     /// <summary>

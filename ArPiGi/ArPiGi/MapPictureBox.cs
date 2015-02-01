@@ -5,6 +5,9 @@ using System.Windows.Forms;
 
 namespace ArPiGi
 {
+  /// <summary>
+  /// Represents a tile placeholder on the map.
+  /// </summary>
   class MapPictureBox : PictureBox
   {
     /// <summary>
@@ -19,9 +22,9 @@ namespace ArPiGi
     Bitmap _finalImage;
 
     /// <summary>
-    /// The MapTile of this pictureBox.
+    /// The id of the MapTile of this MapPictureBox.
     /// </summary>
-    MapTile _mapTile;
+    int _mapTileID;
 
     /// <summary>
     /// Constructor.
@@ -29,7 +32,7 @@ namespace ArPiGi
     public MapPictureBox()
     {
       _entities = new List<EntityBase>();
-      _finalImage = new Bitmap(20, 20);
+      _finalImage = new Bitmap(50, 50);
     }
 
     /// <summary>
@@ -74,8 +77,8 @@ namespace ArPiGi
     {
       using(Graphics g = Graphics.FromImage(_finalImage))
       {
-        if (_mapTile.Layer == Layer.Lower)
-          g.DrawImage(_mapTile.Sprite, new Point(0, 0));
+        if (Tiles.GetMapTile(_mapTileID).Layer == Layer.Lower)
+          g.DrawImage(Tiles.GetMapTile(_mapTileID).Sprite, new Point(0, 0));
 
         foreach(EntityBase entity in _entities)
         {
@@ -83,8 +86,8 @@ namespace ArPiGi
           g.DrawImage(sprite, new Rectangle(0, 0, sprite.Width, sprite.Height));
         }
 
-        if(_mapTile.Layer == Layer.Upper)
-          g.DrawImage(_mapTile.Sprite, new Point(0, 0));
+        if(Tiles.GetMapTile(_mapTileID).Layer == Layer.Upper)
+          g.DrawImage(Tiles.GetMapTile(_mapTileID).Sprite, new Point(0, 0));
       }
 
       Image = _finalImage;

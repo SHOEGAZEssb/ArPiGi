@@ -1,6 +1,8 @@
 ﻿namespace ArPiGi
 {
-  //Represents the skills that every player can learn
+  /// <summary>
+  /// Represents a skill that an entity can learn.
+  /// </summary>
   class Skill
   {
     string _name;
@@ -8,7 +10,7 @@
     int _mpCost;
 
     /// <summary>
-    /// Gets/Sets the skills name
+    /// Gets/sets the name of this skill.
     /// </summary>
     public string Name
     {
@@ -17,7 +19,7 @@
     }
 
     /// <summary>
-    /// Gets/Sets the skills description
+    /// Gets/sets the description of this skill.
     /// </summary>
     public string Description
     {
