@@ -9,12 +9,7 @@ namespace ArPiGi
   public class Player : FightableEntity
   {
     private int _xp;
-<<<<<<< HEAD
-    
-=======
     private int _gold;
-    private Point _location;
->>>>>>> origin/master
 
     /// <summary>
     /// Gets/sets a the experience points of this player.
