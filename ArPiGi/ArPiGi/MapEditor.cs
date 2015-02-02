@@ -75,6 +75,9 @@ namespace ArPiGi
 
     }
 
+    /// <summary>
+    /// Creates a new map via the NewMapDialog.
+    /// </summary>
     private void newToolStripMenuItem_Click(object sender, EventArgs e)
     {
       NewMapDialog dlg = new NewMapDialog();
@@ -138,6 +141,9 @@ namespace ArPiGi
       box.Capture = false;
     }
 
+    /// <summary>
+    /// Saves the currently loaded map to a file.
+    /// </summary>
     private void saveMapToolStripMenuItem_Click(object sender, EventArgs e)
     {
       if (_loadedMap == null)
@@ -161,8 +167,7 @@ namespace ArPiGi
       }
 
       string[] mapInfo = new string[] { mapHeader, mapTiles };
-      File.WriteAllLines(@"..\..\Maps\" + _loadedMap.Name + ".txt", mapInfo);
-      
+      File.WriteAllLines(@"..\..\Maps\" + _loadedMap.Name + ".mep", mapInfo);
     }
 
     /// <summary>
@@ -174,6 +179,35 @@ namespace ArPiGi
       {
         int[] coordinates = (int[])box.Tag;
         _loadedMap.Tiles[coordinates[0], coordinates[1]] = box.MapTileID;
+      }
+    }
+
+    /// <summary>
+    /// Loads a map from a file.
+    /// </summary>
+    private void loadMapToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+      OpenFileDialog dlg = new OpenFileDialog();
+      dlg.InitialDirectory = System.IO.Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Directory.GetCurrentDirectory()), "..\\Maps"));
+      dlg.Filter = "ArPiGi Maps|*.mep";
+
+      if(dlg.ShowDialog() == DialogResult.OK)
+      {
+        string[] mapInfo = File.ReadAllLines(dlg.FileName);
+        string[] mapHeader = mapInfo[0].Split(';');
+
+        Map map = new Map(mapHeader[0], int.Parse(mapHeader[1]), int.Parse(mapHeader[2]));
+
+        for(int y = 0; y < map.Height; y++)
+        {
+          for(int x = 0; x < map.Width; x++)
+          {
+            map.Tiles[y, x] = int.Parse(mapInfo[y + 1][x].ToString());
+          }
+        }
+
+        _loadedMap = map;
+        InitializeMap();
       }
     }
   }

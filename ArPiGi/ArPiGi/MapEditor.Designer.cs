@@ -70,6 +70,7 @@
       this.loadMapToolStripMenuItem.Name = "loadMapToolStripMenuItem";
       this.loadMapToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
       this.loadMapToolStripMenuItem.Text = "Load Map";
+      this.loadMapToolStripMenuItem.Click += new System.EventHandler(this.loadMapToolStripMenuItem_Click);
       // 
       // saveMapToolStripMenuItem
       // 
