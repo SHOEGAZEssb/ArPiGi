@@ -8,6 +8,7 @@ namespace ArPiGi
   class Player : FightableEntity
   {
     private int _xp;
+    private int _gold;
     private Point _location;
 
     /// <summary>
@@ -17,6 +18,12 @@ namespace ArPiGi
     {
       get { return _xp; }
       private set { _xp = value; }
+    }
+
+    public int Gold
+    {
+      get { return _gold; }
+      private set { _gold = value; }
     }
 
     /// <summary>
@@ -35,6 +42,7 @@ namespace ArPiGi
       : base(1, hp, mp, strength, defense, speed, skills, name, sprites)
     {   
       XP = 0;
+      Gold = 0;
     }
   }
 }
