@@ -33,7 +33,7 @@ namespace ArPiGi
         return;
       }
 
-      Map = new Map((int)numericUpDownWidth.Value, (int)numericUpDownHeight.Value);
+      Map = new Map(textBoxMapName.Text, (int)numericUpDownWidth.Value, (int)numericUpDownHeight.Value);
       this.Close();
     }
 

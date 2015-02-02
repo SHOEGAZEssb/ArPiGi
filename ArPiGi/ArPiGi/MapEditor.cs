@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ArPiGi
@@ -70,6 +71,8 @@ namespace ArPiGi
     {
       MapPictureBox clickedBox = (MapPictureBox)sender;
       clickedBox.MapTileID = _selectedMapPictureBox.MapTileID;
+
+
     }
 
     private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -119,6 +122,39 @@ namespace ArPiGi
     {
       if (_loadedMap == null)
         return;
+
+      ApplyChanges();
+
+      string mapHeader = _loadedMap.Name + ";" + _loadedMap.Width + ";" + _loadedMap.Height;
+      
+
+      string mapTiles = "";
+
+      for(int y = 0; y < _loadedMap.Height; y++)
+      {
+        for(int x = 0; x < _loadedMap.Width; x++)
+        {
+          mapTiles += _loadedMap.Tiles[x, y];
+        }
+
+        mapTiles += "\r\n";
+      }
+
+      string[] mapInfo = new string[] { mapHeader, mapTiles };
+      File.WriteAllLines(@"..\..\Maps\" + _loadedMap.Name + ".txt", mapInfo);
+      
+    }
+
+    /// <summary>
+    /// Applies the changes to the "real" map.
+    /// </summary>
+    private void ApplyChanges()
+    {
+      foreach(MapPictureBox box in mapPanel.Controls)
+      {
+        int[] coordinates = (int[])box.Tag;
+        _loadedMap.Tiles[coordinates[0], coordinates[1]] = box.MapTileID;
+      }
     }
   }
 }
