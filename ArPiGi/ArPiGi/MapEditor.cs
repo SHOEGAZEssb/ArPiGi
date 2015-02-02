@@ -70,9 +70,9 @@ namespace ArPiGi
     private void MapPictureBoxes_Click(object sender, EventArgs e)
     {
       MapPictureBox clickedBox = (MapPictureBox)sender;
-      clickedBox.MapTileID = _selectedMapPictureBox.MapTileID;
 
-
+      if(_selectedMapPictureBox != null)
+        clickedBox.MapTileID = _selectedMapPictureBox.MapTileID;
     }
 
     /// <summary>
@@ -134,7 +134,8 @@ namespace ArPiGi
         Rectangle rc = box.ClientRectangle;
         if (rc.Contains(pt))
         {
-          box.MapTileID = _selectedMapPictureBox.MapTileID;
+          if(_selectedMapPictureBox != null)
+            box.MapTileID = _selectedMapPictureBox.MapTileID;
         }
       }
 
