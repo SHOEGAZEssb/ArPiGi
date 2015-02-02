@@ -105,9 +105,9 @@ namespace ArPiGi
         box.MapTileID = id;
         box.BorderStyle = BorderStyle.FixedSingle;
         box.Click += new EventHandler(MapPictureBoxes_Click);
+        box.MouseMove += new MouseEventHandler(MapPictureBox_MouseMove);
         box.Tag = new int[] { x / 50, y / 50 }; //Set the int[,] coordinates; Map => tiles
         mapPanel.Controls.Add(box);
-
         if (x == (_loadedMap.Width * 50) - 50)
         {
           x = 0;
@@ -116,6 +116,26 @@ namespace ArPiGi
         else
           x += 50; 
       }
+    }
+
+    /// <summary>
+    /// Fills the MapPictureBoxes even if the left mouse button is held down.
+    /// </summary>
+    private void MapPictureBox_MouseMove(object sender, MouseEventArgs e)
+    {
+      MapPictureBox box = (MapPictureBox)sender;
+
+      if (e.Button == MouseButtons.Left)
+      {
+        Point pt = box.PointToClient(Cursor.Position);
+        Rectangle rc = box.ClientRectangle;
+        if (rc.Contains(pt))
+        {
+          box.MapTileID = _selectedMapPictureBox.MapTileID;
+        }
+      }
+
+      box.Capture = false;
     }
 
     private void saveMapToolStripMenuItem_Click(object sender, EventArgs e)
