@@ -5,7 +5,7 @@ namespace ArPiGi
   /// <summary>
   /// Represents an entity that can fight and can be fought.
   /// </summary>
-  abstract class FightableEntity : EntityBase
+  public abstract class FightableEntity : EntityBase
   {
     private int _level;
     private int _hp;

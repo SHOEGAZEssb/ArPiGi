@@ -194,22 +194,29 @@ namespace ArPiGi
 
       if(dlg.ShowDialog() == DialogResult.OK)
       {
-        string[] mapInfo = File.ReadAllLines(dlg.FileName);
-        string[] mapHeader = mapInfo[0].Split(';');
 
-        Map map = new Map(mapHeader[0], int.Parse(mapHeader[1]), int.Parse(mapHeader[2]));
 
-        for(int y = 0; y < map.Height; y++)
-        {
-          for(int x = 0; x < map.Width; x++)
-          {
-            map.Tiles[y, x] = int.Parse(mapInfo[y + 1][x].ToString());
-          }
-        }
-
-        _loadedMap = map;
+        _loadedMap = LoadMap(dlg.FileName);
         InitializeMap();
       }
+    }
+
+    public static Map LoadMap(string path)
+    {
+      string[] mapInfo = File.ReadAllLines(path);
+      string[] mapHeader = mapInfo[0].Split(';');
+
+      Map map = new Map(mapHeader[0], int.Parse(mapHeader[1]), int.Parse(mapHeader[2]));
+
+      for (int y = 0; y < map.Height; y++)
+      {
+        for (int x = 0; x < map.Width; x++)
+        {
+          map.Tiles[y, x] = int.Parse(mapInfo[y + 1][x].ToString());
+        }
+      }
+
+      return map;
     }
   }
 }

@@ -1,14 +1,15 @@
 ﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace ArPiGi
 {
   /// <summary>
   /// Represents the player.
   /// </summary>
-  class Player : FightableEntity
+  public class Player : FightableEntity
   {
     private int _xp;
-    private Point _location;
+    
 
     /// <summary>
     /// Gets/sets a the experience points of this player.
@@ -17,15 +18,6 @@ namespace ArPiGi
     {
       get { return _xp; }
       private set { _xp = value; }
-    }
-
-    /// <summary>
-    /// Gets/sets the location of this player.
-    /// </summary>
-    public Point Location
-    {
-      get { return _location; }
-      private set { _location = value; }
     }
 
     /// <summary>

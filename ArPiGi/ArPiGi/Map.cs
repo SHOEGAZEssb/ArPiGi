@@ -10,6 +10,8 @@
     private int _height;
     private int[,] _tiles;
 
+    private Player _player;
+
     public string Name
     {
       get { return _name; }
@@ -41,6 +43,12 @@
     {
       get { return _tiles; }
       private set { _tiles = value; }
+    }
+
+    public Player Player
+    {
+      get { return _player; }
+      set { _player = value; }
     }
 
     /// <summary>

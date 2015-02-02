@@ -3,7 +3,7 @@
   /// <summary>
   /// Represents a skill that an entity can learn.
   /// </summary>
-  class Skill
+  public class Skill
   {
     string _name;
     string _description;
