@@ -12,7 +12,7 @@ namespace ArPiGi
     private int _gold;
 
     /// <summary>
-    /// Gets/sets a the experience points of this player.
+    /// Gets/sets the experience points of this player.
     /// </summary>
     public int XP
     {
