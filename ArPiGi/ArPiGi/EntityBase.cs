@@ -52,7 +52,7 @@ namespace ArPiGi
     public Point Location
     {
       get { return _location; }
-      private set { _location = value; }
+      set { _location = value; }
     }
 
     /// <summary>
@@ -67,27 +67,31 @@ namespace ArPiGi
       CurrentSprite = Sprites[0];
     }
 
+    /// <summary>
+    /// Moves this entity and sets it's sprite to the direction it is now facing.
+    /// </summary>
+    /// <param name="direction">Direction to move.</param>
     public void Move(MoveDirection direction)
     {
       if (direction == MoveDirection.Up)
       {
-        Location = new Point(Location.X, Location.Y - 1);
         CurrentSprite = Sprites[0];
+        Location = new Point(Location.X, Location.Y - 1);       
       }
       else if (direction == MoveDirection.Right)
       {
-        Location = new Point(Location.X + 1, Location.Y);
         CurrentSprite = Sprites[1];
+        Location = new Point(Location.X + 1, Location.Y);        
       }
       else if (direction == MoveDirection.Down)
       {
-        Location = new Point(Location.X, Location.Y + 1);
         CurrentSprite = Sprites[2];
+        Location = new Point(Location.X, Location.Y + 1);      
       }
       else if (direction == MoveDirection.Left)
       {
-        Location = new Point(Location.X - 1, Location.Y);
         CurrentSprite = Sprites[3];
+        Location = new Point(Location.X - 1, Location.Y);
       }
     }
   }

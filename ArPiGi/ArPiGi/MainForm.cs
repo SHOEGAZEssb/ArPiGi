@@ -51,8 +51,7 @@ namespace ArPiGi
     /// </summary>
     private void MainForm_KeyUp(object sender, KeyEventArgs e)
     {
-      int index = _player.Location.X + (_player.Location.Y * _loadedMap.Width);
-      ((MapPictureBox)panel1.Controls[index]).RemoveEntity(_player);
+      Point oldLocation = _player.Location;
 
       if (e.KeyCode == Keys.Up)
       {
@@ -70,7 +69,17 @@ namespace ArPiGi
       {
         _player.Move(MoveDirection.Left);
       }
+      else
+        return;
 
+      //if player tries to move something he cant go, move him back to his previous location
+      if (_player.Location.X >= _loadedMap.Width || _player.Location.X < 0 || _player.Location.Y >= _loadedMap.Height || _player.Location.Y < 0)
+      {
+        _player.Location = oldLocation;
+      }
+
+      int index = oldLocation.X + (oldLocation.Y * _loadedMap.Width);
+      ((MapPictureBox)panel1.Controls[index]).RemoveEntity(_player);
       index = _player.Location.X + (_player.Location.Y * _loadedMap.Width);
       ((MapPictureBox)panel1.Controls[index]).AddEntity(_player);
     }
