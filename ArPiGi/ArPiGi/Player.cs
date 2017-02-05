@@ -10,6 +10,7 @@ namespace ArPiGi
   {
     private int _xp;
     private int _gold;
+    private int _silver;
 
     /// <summary>
     /// Gets/sets the experience points of this player.
